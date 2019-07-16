@@ -1,14 +1,16 @@
 import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-
+/**Objects of this class represent cows*/
 public class Cow extends Occupant {
 
     public Cow(Unit unit) {
         super(new Color(0,0,255), unit);
         this.speed = 1;
     }
-
+    /**
+     * Allows cows to move up to a set distance away from their current location
+     * @param world The world that the cow is on*/
     public void move(World world) {
         int newXCoord;
         int newYCoord;

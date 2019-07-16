@@ -1,5 +1,7 @@
 import java.awt.*;
 
+/**
+ * Objects of this class represent plants, which are stationary*/
 public class Plant extends Occupant {
 
     public Plant(Unit unit) {
