@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.Timer;
 
+/**
+ * This class represents the 2D array of units on which the simulation takes place.*/
+
 public class World extends JFrame {
     public final int UNIT_SIZE = 10;
     public Unit[][] grid;
@@ -34,7 +37,13 @@ public class World extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
-
+    /**
+     * This method creates the grid of units that make up the world.
+     * @param rows The number of rows
+     * @param columns The number of columns
+     * @param startPlants The initial number of plants
+     * @param startCows The initial number of cows
+     * */
     private void initializeGrid(int rows, int columns, int startPlants, int startCows) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -100,6 +109,9 @@ public class World extends JFrame {
         }
     }*/
 
+    /**
+     * This method is used for debugging purposes.
+     * */
     public void debugInfo() {
         int plantcount = 0;
         for (int i = 0; i < this.rows; i++) {
