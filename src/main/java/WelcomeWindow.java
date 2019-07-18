@@ -35,7 +35,7 @@ public class WelcomeWindow {
             World world = new World(getStartRows(), getStartCols(), getStartPlants(), getStartCows());
             frame.setVisible(false);
             frame.dispose();
-            world.debugInfo();
+            //world.debugInfo();
         }));
 
         fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.PAGE_AXIS));

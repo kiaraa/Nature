@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Timer;
 import java.util.concurrent.ThreadLocalRandom;
-import javax.swing.Timer;
 
 /**
  * This class represents the 2D array of units on which the simulation takes place.*/
@@ -26,6 +24,10 @@ public class World extends JFrame {
         this.startPlants = startPlants;
         this.startCows = startCows;
         this.grid = new Unit[rows][columns];
+        this.worldTimer = new Timer();
+        Ticker ticker = new Ticker(this);
+        worldTimer.schedule(ticker, 0, 3000);
+
         initializeGrid(rows, columns, startPlants, startCows);
 
         setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
@@ -99,7 +101,7 @@ public class World extends JFrame {
         }
     }
 
-    /*public void tick() {
+    public void tick() {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 if (this.grid[i][j].cowSpace instanceof Cow) {
@@ -107,7 +109,8 @@ public class World extends JFrame {
                 }
             }
         }
-    }*/
+        System.out.println("tick");
+    }
 
     /**
      * This method is used for debugging purposes.
