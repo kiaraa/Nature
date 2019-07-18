@@ -9,14 +9,12 @@ public class Ticker extends TimerTask {
     }
 
     @Override
-    public void run(){
+    public void run(){ //FIXME
         try {
             world.tick();
             System.out.println("tick");
-
-
         } catch (Exception ex) {
-            System.out.println("error running thread " + ex.getMessage());
+            System.out.println("error running thread " + ex.getMessage()); //Throws exceptions with messages -1, 2 and 20
         }
     }
 }

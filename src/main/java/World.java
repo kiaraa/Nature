@@ -26,7 +26,7 @@ public class World extends JFrame {
         this.grid = new Unit[rows][columns];
         this.worldTimer = new Timer();
         Ticker ticker = new Ticker(this);
-        worldTimer.schedule(ticker, 0, 3000);
+        worldTimer.schedule(ticker, 0, 1000);
 
         initializeGrid(rows, columns, startPlants, startCows);
 
@@ -109,7 +109,7 @@ public class World extends JFrame {
                 }
             }
         }
-        System.out.println("tick");
+        this.repaint();
     }
 
     /**
