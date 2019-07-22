@@ -31,7 +31,7 @@ public class World extends JFrame {
         Ticker ticker = new Ticker(this);
         initializeGrid(rows, columns, startPlants, startCows);
 
-        worldTimer.schedule(ticker, 0, 10000); //TODO change back to 1000
+        worldTimer.schedule(ticker, 0, 1000);
 
         setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
 

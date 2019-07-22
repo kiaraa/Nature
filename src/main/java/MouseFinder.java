@@ -42,6 +42,13 @@ public class MouseFinder implements MouseListener {
         Unit clickedUnit = world.grid[xCoord][yCoord];
         System.out.println(clickedUnit);
         world.selectedUnit = clickedUnit;
+
+        //testing code, put it somewhere else later
+        if (clickedUnit.cowSpace instanceof Cow){
+            clickedUnit.cowSpace.highlight();
+            world.repaint();
+        }
+
         return clickedUnit;
     }
 }
