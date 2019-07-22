@@ -4,7 +4,7 @@ import java.awt.*;
  * All living things will inherit from this class.
  * */
 public abstract class Occupant {
-    private Color color;
+    Color color;
     public final Color HIGHLIGHT_COLOR = new Color(250,246,0);
     public final Color COW_COLOR = new Color(0,0,255);
     public final Color PLANT_COLOR = new Color(0,255,0);
@@ -12,6 +12,7 @@ public abstract class Occupant {
     public Unit unit;
     public int speed;
     public String name;
+    public boolean isHighlighted;
 
     /**
      * @param color The color that will be displayed in the occupied space.
@@ -20,6 +21,7 @@ public abstract class Occupant {
         this.color = color;
         this.unit = unit;
         this.name = name;
+        this.isHighlighted = false;
     }
 
     public Occupant(Color color) {
@@ -45,6 +47,7 @@ public abstract class Occupant {
      * Highlights the creature to make it easier to keep track of*/
     public void highlight(){
     this.color = HIGHLIGHT_COLOR;
+    this.isHighlighted = true;
     }
 
     public abstract void move(World world);
@@ -55,4 +58,6 @@ public abstract class Occupant {
     public void rename(String newName) {
         this.name = newName;
     }
+
+    public abstract void restoreDefaultColor();
 }

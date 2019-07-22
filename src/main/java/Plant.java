@@ -15,4 +15,10 @@ public class Plant extends Occupant {
     public void move(World world) {
 
     }
+
+    @Override
+    public void restoreDefaultColor() {
+        this.color = PLANT_COLOR;
+        this.isHighlighted = false;
+    }
 }

@@ -4,10 +4,13 @@ import java.util.concurrent.ThreadLocalRandom;
 /**Objects of this class represent cows*/
 public class Cow extends Occupant {
 
+    static int lifetimeCows = 0;
+
     public Cow(Unit unit) {
         super(new Color(0,0,255), unit);
         this.speed = 1;
-        this.name = "Cow";
+        lifetimeCows++;
+        this.name = "Cow #" + lifetimeCows;
     }
     /**
      * Allows cows to move up to a set distance away from their current location
@@ -51,6 +54,12 @@ public class Cow extends Occupant {
             System.out.println("A cow tried to walk off the earth.");
         }
 
+    }
+
+    @Override
+    public void restoreDefaultColor() {
+        this.color = COW_COLOR;
+        this.isHighlighted = false;
     }
 
     private boolean targetOnGrid(World world, int newXCoord, int newYCoord) {
