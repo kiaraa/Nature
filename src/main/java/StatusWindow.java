@@ -1,12 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class StatusWindow {
     Occupant creature;
     JFrame frame;
-    JPanel fieldsPanel, buttonsPanel;
+    JPanel renamePanel, namePanel;
     JLabel nameLabel;
     JTextField renameField;
     JButton renameButton, closeButton;
@@ -14,18 +12,19 @@ public class StatusWindow {
     StatusWindow(Occupant creature){
         this.creature = creature;
         frame = new JFrame(creature.name + " Status");
-        fieldsPanel = new JPanel();
-        buttonsPanel = new JPanel();
+        renamePanel = new JPanel();
+        namePanel = new JPanel();
         nameLabel = new JLabel("Name: " + creature.name);
         renameField = new JTextField("Enter new name here");
         renameButton = new JButton("Rename");
 
-        fieldsPanel.add(nameLabel);
-        fieldsPanel.add(renameField);
-        buttonsPanel.add(renameButton);
+        namePanel.add(nameLabel);
+        renamePanel.add(renameField);
+        renamePanel.add(renameButton);
 
-        frame.add(fieldsPanel, BorderLayout.PAGE_START);
-        frame.add(buttonsPanel, BorderLayout.PAGE_END);
+
+        frame.add(namePanel, BorderLayout.PAGE_START);
+        frame.add(renamePanel, BorderLayout.PAGE_END);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

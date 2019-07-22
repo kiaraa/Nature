@@ -29,6 +29,7 @@ public class World extends JFrame {
         this.grid = new Unit[rows][columns];
         this.worldTimer = new Timer();
         Ticker ticker = new Ticker(this);
+        this.getContentPane().setBackground(new Color(50,50,50));
         initializeGrid(rows, columns, startPlants, startCows);
 
         worldTimer.schedule(ticker, 0, 1000);
