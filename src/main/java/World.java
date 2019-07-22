@@ -26,14 +26,11 @@ public class World extends JFrame {
         this.grid = new Unit[rows][columns];
         this.worldTimer = new Timer();
         Ticker ticker = new Ticker(this);
-        worldTimer.schedule(ticker, 0, 1000);
-
         initializeGrid(rows, columns, startPlants, startCows);
 
-        setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
+        worldTimer.schedule(ticker, 0, 1000);
 
-        //worldTimer = new Timer(3000, e -> tick());
-        //worldTimer.start();
+        setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
 
         setVisible(true);
 

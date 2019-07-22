@@ -47,9 +47,7 @@ public abstract class Occupant {
         this.color = HIGHLIGHT_COLOR;
     }
 
-    public void move(World world) {
-
-    }
+    public abstract void move(World world);
 
     /**
      * Changes the name of the creature

@@ -10,7 +10,9 @@ public class EmptySpace extends Occupant{
         super(new Color(50,50,50));
     }
 
-    public void move() {
+
+    @Override
+    public void move(World world) {
 
     }
 }

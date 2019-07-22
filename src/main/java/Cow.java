@@ -11,6 +11,7 @@ public class Cow extends Occupant {
     /**
      * Allows cows to move up to a set distance away from their current location
      * @param world The world that the cow is on*/
+    @Override
     public void move(World world) {
         int newXCoord;
         int newYCoord;
@@ -35,7 +36,7 @@ public class Cow extends Occupant {
             default:    newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.xCoord;
         }
-        if ((newXCoord < world.columns && newYCoord < world.rows && (newXCoord >= 0 && newYCoord >= 0))) {
+        if (targetOnGrid(world, newXCoord, newYCoord)) {
             if (world.grid[newXCoord][newYCoord].cowSpace instanceof EmptySpace) {
                 this.unit.changeCowSpaceOccupant(new EmptySpace());
                 world.grid[newXCoord][newYCoord].changeCowSpaceOccupant(this);
@@ -49,6 +50,10 @@ public class Cow extends Occupant {
             System.out.println("A cow tried to walk off the earth.");
         }
 
+    }
+
+    private boolean targetOnGrid(World world, int newXCoord, int newYCoord) {
+        return newXCoord < world.columns && newYCoord < world.rows && (newXCoord >= 0 && newYCoord >= 0);
     }
 
 }
