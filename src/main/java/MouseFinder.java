@@ -7,9 +7,9 @@ public class MouseFinder implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        int xCoord = e.getX();
-        int yCoord = e.getY();
-        System.out.println("Clicked at X: " + xCoord + " Y: " + yCoord);
+        int xCoord = e.getX() / 10;
+        int yCoord = (e.getY() - 25) / 10;
+        System.out.println("Clicked at square X: " + xCoord + " Y: " + yCoord);
     }
 
     @Override
@@ -29,6 +29,11 @@ public class MouseFinder implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void getSquareClicked(MouseEvent e, World world){ //TODO convert type to Unit later
+        int convertedX = e.getX() / 10;
 
     }
 }
