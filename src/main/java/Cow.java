@@ -35,14 +35,20 @@ public class Cow extends Occupant {
             default:    newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.xCoord;
         }
-        if (world.grid[newXCoord][newYCoord].cowSpace instanceof EmptySpace) {
-            this.unit.changeCowSpaceOccupant(new EmptySpace());
-            world.grid[newXCoord][newYCoord].changeCowSpaceOccupant(this);
-            this.unit = world.grid[newXCoord][newYCoord];
+        if ((newXCoord < world.columns && newYCoord < world.rows && (newXCoord >= 0 && newYCoord >= 0))) {
+            if (world.grid[newXCoord][newYCoord].cowSpace instanceof EmptySpace) {
+                this.unit.changeCowSpaceOccupant(new EmptySpace());
+                world.grid[newXCoord][newYCoord].changeCowSpaceOccupant(this);
+                this.unit = world.grid[newXCoord][newYCoord];
+            }
+            else {
+                System.out.println("A cow bumped into a friend.");
+            }
         }
-        else {
-            System.out.println("A movement failed.");
+        else{
+            System.out.println("A cow tried to walk off the earth.");
         }
+
     }
 
 }

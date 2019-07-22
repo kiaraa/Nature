@@ -14,7 +14,8 @@ public class Ticker extends TimerTask {
             world.tick();
             System.out.println("tick");
         } catch (Exception ex) {
-            System.out.println("error running thread " + ex.getMessage()); //Throws exceptions with messages -1, 2 and 20
+            ex.printStackTrace();
+            System.err.println("error running thread " + ex.getMessage()); //Throws exceptions with messages -1, 2 and 20
         }
     }
 }
