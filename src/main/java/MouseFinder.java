@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -13,7 +14,13 @@ public class MouseFinder implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        getUnitClicked(e, world);
+        Unit unit = getUnitClicked(e, world);
+        if (SwingUtilities.isRightMouseButton(e) || e.isControlDown()){
+            if (unit.cowSpace instanceof Cow){
+                System.out.println("You right-clicked at " + unit);
+                new StatusWindow(unit.cowSpace);
+            }
+        }
     }
 
     @Override
@@ -36,19 +43,17 @@ public class MouseFinder implements MouseListener {
 
     }
 
-    public Unit getUnitClicked(MouseEvent e, World world){
+    public Unit getUnitClicked(MouseEvent e, World world){ //TODO Think about finding a better place for this highlighting code
         int xCoord = e.getX() / 10;
         int yCoord = (e.getY() - 25) / 10;
         Unit clickedUnit = world.grid[xCoord][yCoord];
         System.out.println(clickedUnit);
         world.selectedUnit = clickedUnit;
 
-        //testing code, put it somewhere else later
         if (clickedUnit.cowSpace instanceof Cow){
             clickedUnit.cowSpace.highlight();
             world.repaint();
         }
-
         return clickedUnit;
     }
 }

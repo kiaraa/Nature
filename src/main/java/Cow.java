@@ -7,6 +7,7 @@ public class Cow extends Occupant {
     public Cow(Unit unit) {
         super(new Color(0,0,255), unit);
         this.speed = 1;
+        this.name = "Cow";
     }
     /**
      * Allows cows to move up to a set distance away from their current location
