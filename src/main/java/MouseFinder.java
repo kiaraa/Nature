@@ -51,11 +51,11 @@ public class MouseFinder implements MouseListener {
         world.selectedUnit = clickedUnit;
 
         if (clickedUnit.cowSpace instanceof Cow){
-            if (!clickedUnit.cowSpace.isHighlighted){
+            if (!clickedUnit.cowSpace.isHighlighted && !SwingUtilities.isRightMouseButton(e)){
                 clickedUnit.cowSpace.highlight();
                 world.repaint();
             }
-            else{
+            else if (clickedUnit.cowSpace.isHighlighted && !SwingUtilities.isRightMouseButton(e)){
                 clickedUnit.cowSpace.restoreDefaultColor();
                 world.repaint();
             }
