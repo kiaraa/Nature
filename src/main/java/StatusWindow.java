@@ -29,6 +29,14 @@ public class StatusWindow {
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        renameButton.addActionListener(e -> SwingUtilities.invokeLater(() -> {
+            creature.rename(this.getNewName());
+        }));
+    }
+
+    public String getNewName(){
+        return renameField.getText();
     }
 
 }
