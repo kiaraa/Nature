@@ -43,8 +43,8 @@ public abstract class Occupant {
 
     /**
      * Highlights the creature to make it easier to keep track of*/
-    public void highlight() {
-        this.color = HIGHLIGHT_COLOR;
+    public void highlight(){
+    this.color = HIGHLIGHT_COLOR;
     }
 
     public abstract void move(World world);

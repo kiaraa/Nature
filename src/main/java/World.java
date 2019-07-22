@@ -15,11 +15,13 @@ public class World extends JFrame {
     Color color2;
     int startPlants;
     int startCows;
+    Unit selectedUnit;
     Timer worldTimer;
 
     public World(int rows,int columns, int startPlants, int startCows) {
         super("Nature");
-        this.addMouseListener(new MouseFinder());
+        this.addMouseListener(new MouseFinder(this));
+        this.selectedUnit = null;
         this.rows = rows;
         this.columns = columns;
         this.startPlants = startPlants;

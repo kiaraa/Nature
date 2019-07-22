@@ -5,11 +5,15 @@ import java.awt.event.MouseListener;
 
 public class MouseFinder implements MouseListener {
 
+    World world;
+
+    public MouseFinder(World world){
+        this.world = world;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        int xCoord = e.getX() / 10;
-        int yCoord = (e.getY() - 25) / 10;
-        System.out.println("Clicked at square X: " + xCoord + " Y: " + yCoord);
+        getUnitClicked(e, world);
     }
 
     @Override
@@ -32,8 +36,12 @@ public class MouseFinder implements MouseListener {
 
     }
 
-    public void getSquareClicked(MouseEvent e, World world){ //TODO convert type to Unit later
-        int convertedX = e.getX() / 10;
-
+    public Unit getUnitClicked(MouseEvent e, World world){
+        int xCoord = e.getX() / 10;
+        int yCoord = (e.getY() - 25) / 10;
+        Unit clickedUnit = world.grid[xCoord][yCoord];
+        System.out.println(clickedUnit);
+        world.selectedUnit = clickedUnit;
+        return clickedUnit;
     }
 }
