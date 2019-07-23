@@ -4,10 +4,12 @@ import java.awt.*;
 public class EmptySpace extends Occupant{
     public EmptySpace(Unit unit) {
         super(new Color(50,50,50),unit);
+        this.energy = 0;
     }
 
     public EmptySpace() {
         super(new Color(50,50,50));
+        this.energy = 0;
     }
 
 

@@ -18,6 +18,7 @@ public class Plant extends Occupant {
 
     @Override
     public void restoreDefaultColor() {
+        this.energy = 0;
         this.color = PLANT_COLOR;
         this.isHighlighted = false;
     }

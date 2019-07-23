@@ -13,6 +13,7 @@ public abstract class Occupant {
     public int speed;
     public String name;
     public boolean isHighlighted;
+    public int energy;
 
     /**
      * @param color The color that will be displayed in the occupied space.

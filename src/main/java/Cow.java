@@ -11,6 +11,7 @@ public class Cow extends Occupant {
         this.speed = 1;
         lifetimeCows++;
         this.name = "Cow #" + lifetimeCows;
+        this.energy = 10;
     }
     /**
      * Allows cows to move up to a set distance away from their current location
