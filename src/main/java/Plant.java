@@ -22,4 +22,9 @@ public class Plant extends Occupant {
         this.color = PLANT_COLOR;
         this.isHighlighted = false;
     }
+
+    @Override
+    public void takeTurn(World world) {
+
+    }
 }

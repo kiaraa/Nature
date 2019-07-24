@@ -32,7 +32,7 @@ public class World extends JFrame {
         this.getContentPane().setBackground(new Color(50,50,50));
         initializeGrid(rows, columns, startPlants, startCows);
 
-        worldTimer.schedule(ticker, 0, 1000);
+        worldTimer.schedule(ticker, 0, 5000);
 
         setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
 
@@ -106,7 +106,7 @@ public class World extends JFrame {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
                 if (this.grid[i][j].cowSpace instanceof Cow) {
-                    this.grid[i][j].cowSpace.move(this);
+                    this.grid[i][j].cowSpace.takeTurn(this);
                 }
             }
         }

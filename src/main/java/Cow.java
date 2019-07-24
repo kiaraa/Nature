@@ -20,22 +20,26 @@ public class Cow extends Occupant {
     public void move(World world) {
         int newXCoord;
         int newYCoord;
-        int direction = ThreadLocalRandom.current().nextInt(-1, 3);
+        int direction = ThreadLocalRandom.current().nextInt(-1, 4);
         switch(direction) {
             case -1:    newXCoord = this.unit.xCoord - this.speed;
                         newYCoord = this.unit.yCoord;
+                        energy--;
                         break;
 
             case 0:     newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.yCoord + this.speed;
+                        energy--;
                         break;
 
             case 1:     newXCoord = this.unit.xCoord + this.speed;
                         newYCoord = this.unit.yCoord;
+                        energy--;
                         break;
 
             case 2:     newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.yCoord - this.speed;
+                        energy--;
                         break;
 
             default:    newXCoord = this.unit.xCoord;
@@ -61,6 +65,11 @@ public class Cow extends Occupant {
     public void restoreDefaultColor() {
         this.color = COW_COLOR;
         this.isHighlighted = false;
+    }
+
+    @Override
+    public void takeTurn(World world) {
+        this.move(world);
     }
 
     private boolean targetOnGrid(World world, int newXCoord, int newYCoord) {

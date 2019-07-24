@@ -23,4 +23,9 @@ public class EmptySpace extends Occupant{
         this.color = EMPTY_COLOR;
         this.isHighlighted = false;
     }
+
+    @Override
+    public void takeTurn(World world) {
+
+    }
 }
