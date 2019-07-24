@@ -67,7 +67,7 @@ public class World extends JFrame {
         int xSeed = ThreadLocalRandom.current().nextInt(0, rows);
         int ySeed = ThreadLocalRandom.current().nextInt(0, columns);
         if (!(grid[xSeed][ySeed].groundSpace instanceof Plant)) {
-            grid[xSeed][ySeed].changeGroundOccupant(new Plant());
+            grid[xSeed][ySeed].changeGroundOccupant(new Plant(grid[xSeed][ySeed]));
         }
         else {
             initializePlant();

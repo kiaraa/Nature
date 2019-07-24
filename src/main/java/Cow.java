@@ -24,22 +24,22 @@ public class Cow extends Occupant {
         switch(direction) {
             case -1:    newXCoord = this.unit.xCoord - this.speed;
                         newYCoord = this.unit.yCoord;
-                        energy--;
+                        this.energy--;
                         break;
 
             case 0:     newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.yCoord + this.speed;
-                        energy--;
+                        this.energy--;
                         break;
 
             case 1:     newXCoord = this.unit.xCoord + this.speed;
                         newYCoord = this.unit.yCoord;
-                        energy--;
+                        this.energy--;
                         break;
 
             case 2:     newXCoord = this.unit.xCoord;
                         newYCoord = this.unit.yCoord - this.speed;
-                        energy--;
+                        this.energy--;
                         break;
 
             default:    newXCoord = this.unit.xCoord;
@@ -61,6 +61,13 @@ public class Cow extends Occupant {
 
     }
 
+    public void eat(World world){
+        if (this.unit.groundSpace instanceof Plant){
+            this.energy += 5;
+            ((Plant) this.unit.groundSpace).getEaten(world);
+        }
+    }
+
     @Override
     public void restoreDefaultColor() {
         this.color = COW_COLOR;
@@ -69,7 +76,29 @@ public class Cow extends Occupant {
 
     @Override
     public void takeTurn(World world) {
-        this.move(world);
+        if (this.isHighlighted){
+            System.out.println("Highlighted cow has " + this.energy + " energy.");
+        }
+        if (this.energy <= 0){
+            this.die(world);
+        }
+        else{
+            int actionChoice = ThreadLocalRandom.current().nextInt(0, 5);
+            switch (actionChoice){
+                case 0:     this.eat(world);
+                    System.out.println("A cow tried to eat.");
+                            break;
+
+                default:    this.move(world);
+            }
+
+        }
+    }
+
+    @Override
+    public void die(World world) {
+        this.unit.changeCowSpaceOccupant(new EmptySpace());
+        System.out.println("A cow died with " + this.energy + " energy.");
     }
 
     private boolean targetOnGrid(World world, int newXCoord, int newYCoord) {

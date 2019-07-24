@@ -63,4 +63,6 @@ public abstract class Occupant {
     public abstract void restoreDefaultColor();
 
     public abstract void takeTurn(World world);
+
+    public abstract void die(World world);
 }

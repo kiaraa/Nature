@@ -28,4 +28,9 @@ public class EmptySpace extends Occupant{
     public void takeTurn(World world) {
 
     }
+
+    @Override
+    public void die(World world) {
+
+    }
 }
