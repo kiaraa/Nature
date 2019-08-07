@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -17,6 +18,7 @@ public class World extends JFrame {
     int startCows;
     Unit selectedUnit;
     Timer worldTimer;
+    ArrayList<Occupant> hasMovedList = new ArrayList<>();
 
     public World(int rows,int columns, int startPlants, int startCows) {
         super("Nature");
@@ -32,7 +34,7 @@ public class World extends JFrame {
         this.getContentPane().setBackground(new Color(50,50,50));
         initializeGrid(rows, columns, startPlants, startCows);
 
-        worldTimer.schedule(ticker, 0, 5000);
+        worldTimer.schedule(ticker, 0, 2000);
 
         setSize(columns * UNIT_SIZE,(rows * UNIT_SIZE) + 23);
 
@@ -102,14 +104,20 @@ public class World extends JFrame {
         }
     }
 
+    //TODO find out why the hasMovedList isn't stopping cows from moving more than once
     public void tick() {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                if (this.grid[i][j].cowSpace instanceof Cow) {
+                if (this.grid[i][j].cowSpace instanceof Cow && !hasMovedList.contains(this.grid[i][j].cowSpace)) {
+                    hasMovedList.add(this.grid[i][j].cowSpace);
                     this.grid[i][j].cowSpace.takeTurn(this);
+                }
+                else if (this.grid[i][j].cowSpace instanceof Cow){
+                    System.out.println("A cow tried to move, but already had.");
                 }
             }
         }
+        hasMovedList.clear();
         this.repaint();
     }
 
