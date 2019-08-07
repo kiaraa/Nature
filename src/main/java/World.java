@@ -103,8 +103,7 @@ public class World extends JFrame {
             }
         }
     }
-
-    //TODO find out why the hasMovedList isn't stopping cows from moving more than once
+    
     public void tick() {
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
